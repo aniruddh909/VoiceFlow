@@ -1,227 +1,223 @@
-# 🎤 VoiceFlow AI
+# VoiceFlow AI
 
-A modern fullstack audio-to-text application that transforms voice recordings into clear, structured text using AI. Built as a clone of AudioPen.ai with unique design and enhanced features.
+A fullstack audio-to-text application that transforms voice recordings into clear, structured text using AI-powered transcription and text refinement. This project replicates AudioPen.ai functionality with modern design and cost-effective local AI processing.
 
-## ✨ Features
+![VoiceFlow Frontend](docs/images/frontend-screenshot.png)
 
-- **🎙️ Audio Recording & Upload**: Record directly in browser or upload MP3, WAV, M4A files
-- **🤖 AI Transcription**: Powered by OpenAI Whisper for accurate speech-to-text
-- **✨ Smart Text Refinement**: Use GPT-4 to improve grammar, structure, and clarity
-- **🎨 Tone Customization**: Choose between casual, formal, or "like me" styles
-- **📝 Custom Prompts**: Create personalized refinement instructions
-- **💾 Note Management**: Save, view, edit, and export your transcriptions
-- **📱 Responsive Design**: Clean, modern interface that works on all devices
+## Features
 
-## 🏗️ Tech Stack
+- **Voice Recording**: Real-time audio recording with microphone integration
+- **File Upload**: Support for multiple audio formats (MP3, WAV, M4A)
+- **AI Transcription**: Powered by HuggingFace Whisper models for accurate speech-to-text conversion
+- **Text Refinement**: AI-powered text improvement with customizable tones and styles
+- **Modern UI**: Clean, responsive interface built with React and Tailwind CSS
+- **Cost Effective**: Uses free HuggingFace models instead of expensive OpenAI APIs
+- **Local Processing**: All AI processing happens locally for privacy and cost savings
+
+## Technology Stack
 
 ### Backend
-
-- **FastAPI** - Modern, fast web framework for building APIs
-- **OpenAI Whisper** - State-of-the-art speech recognition
-- **OpenAI GPT-4** - Advanced text refinement and style adjustment
-- **SQLite** - Lightweight database for development
-- **AsyncIO** - Asynchronous processing for better performance
+- **FastAPI**: Modern, fast web framework for building APIs
+- **HuggingFace Transformers**: AI models for transcription and text processing
+- **SQLite**: Lightweight database for storing notes and transcriptions
+- **Python 3.9+**: Core backend language with async/await support
+- **Uvicorn**: ASGI server for running the FastAPI application
 
 ### Frontend
+- **React**: Modern JavaScript library for building user interfaces
+- **TypeScript**: Type-safe JavaScript development
+- **Vite**: Fast build tool and development server
+- **Tailwind CSS**: Utility-first CSS framework
+- **Shadcn/ui**: Modern component library
 
-- **HTML5 + Tailwind CSS** - Modern, responsive design system
-- **Vanilla JavaScript** - Clean, dependency-free frontend
-- **Web Audio API** - Browser-based audio recording
-- **Lucide Icons** - Beautiful, consistent iconography
+### AI Models
+- **openai/whisper-base**: Speech recognition and transcription
+- **microsoft/DialoGPT-medium**: Text refinement and style enhancement
 
-## 🚀 Quick Start
+## Installation
 
 ### Prerequisites
+- Python 3.9 or higher
+- Node.js 16 or higher
+- Git
 
-- Python 3.8+
-- OpenAI API key
+### Backend Setup
 
-### Installation
+1. Clone the repository:
+```bash
+git clone https://github.com/aniruddh909/VoiceFlow.git
+cd VoiceFlow
+```
 
-1. **Clone and navigate to the project**:
+2. Create and activate a virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+```
 
-   ```bash
-   cd VoiceFlow
-   ```
+3. Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-2. **Set up the backend**:
+4. Create environment file:
+```bash
+cp .env.example .env
+# Edit .env with your configuration if needed
+```
 
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   ```
+5. Initialize the database:
+```bash
+python -c "from backend.database.init_db import init_database; init_database()"
+```
 
-3. **Configure environment variables**:
+6. Start the backend server:
+```bash
+python start_server.py
+```
 
-   ```bash
-   cp .env.example .env
-   # Edit .env and add your OpenAI API key
-   ```
+The backend will be available at `http://localhost:8000`
 
-4. **Initialize the database**:
+### Frontend Setup
 
-   ```bash
-   python init_db.py
-   ```
+Note: The frontend code is managed separately and not included in this repository. To set up the frontend:
 
-5. **Start the backend server**:
+1. Create a new React project with Vite and TypeScript
+2. Install required dependencies (React, Tailwind CSS, Shadcn/ui)
+3. Configure Vite proxy to connect to the backend API
+4. Implement the UI components for audio recording and transcription
 
-   ```bash
-   python main.py
-   ```
-
-6. **Open the frontend**:
-   Navigate to `http://localhost:8000/static/index.html` in your browser
-
-## 📖 Usage
-
-### Recording Audio
-
-1. Click "Start Recording" to begin voice recording
-2. Speak clearly and click "Stop Recording" when finished
-3. The audio will be automatically transcribed
-
-### Uploading Files
-
-1. Click "Upload File" or drag and drop audio files
-2. Supported formats: MP3, WAV, M4A, MP4
-3. Files are processed immediately after upload
-
-### Refining Text
-
-1. After transcription, choose your preferred tone:
-   - **Casual**: Conversational and relaxed
-   - **Formal**: Professional and structured
-   - **Like Me**: Preserves your personal style
-2. Click "Refine Text" to improve the transcription
-3. Copy, export, or save the refined text
-
-### Managing Notes
-
-- View all your previous transcriptions in the history section
-- Click "View" to reload a note for further editing
-- Export notes as TXT files
-- Delete notes you no longer need
-
-## 🛠️ API Endpoints
+## API Endpoints
 
 ### Transcription
-
-- `POST /api/transcribe/upload` - Upload and transcribe audio
-- `GET /api/transcribe/status/{note_id}` - Get transcription status
+- `POST /api/transcribe/upload` - Upload and transcribe audio files
+- `POST /api/transcribe/record` - Transcribe recorded audio data
 
 ### Text Refinement
-
-- `POST /api/refine/improve` - Refine transcribed text
-- `POST /api/refine/custom-prompt` - Save custom prompts
-- `GET /api/refine/tones` - Get available tone options
+- `POST /api/refine/improve` - Improve transcribed text with AI
+- `GET /api/refine/tones` - Get available refinement tones
 
 ### Notes Management
+- `GET /api/notes/` - Retrieve all saved notes
+- `POST /api/notes/` - Save a new note
+- `PUT /api/notes/{note_id}` - Update an existing note
+- `DELETE /api/notes/{note_id}` - Delete a note
 
-- `GET /api/notes/` - Get all notes with pagination
-- `GET /api/notes/{note_id}` - Get specific note
-- `DELETE /api/notes/{note_id}` - Delete note
-- `GET /api/notes/{note_id}/export` - Export note
+## Project Structure
 
-## 🔧 Configuration
+```
+VoiceFlow/
+├── backend/
+│   ├── routes/          # API route handlers
+│   ├── services/        # Business logic and AI services
+│   ├── database/        # Database models and operations
+│   ├── models/          # Pydantic models for request/response
+│   └── main.py          # FastAPI application entry point
+├── docs/                # Documentation and images
+├── .venv/               # Python virtual environment (not tracked)
+├── .env                 # Environment variables (not tracked)
+├── requirements.txt     # Python dependencies
+├── start_server.py      # Server startup script
+└── README.md           # This file
+```
+
+## Development
+
+### Running in Development Mode
+
+1. Start the backend server:
+```bash
+source .venv/bin/activate
+python start_server.py
+```
+
+2. The API will be available at `http://localhost:8000`
+3. API documentation available at `http://localhost:8000/docs`
+
+### Testing
+
+Run the test suite:
+```bash
+python -m pytest tests/
+```
+
+Test individual services:
+```bash
+python test_services.py
+```
+
+## Configuration
 
 ### Environment Variables
 
-```env
-# Required
-OPENAI_API_KEY=your_openai_api_key_here
+Create a `.env` file in the root directory:
 
-# Optional
-DATABASE_URL=sqlite:///voiceflow.db
+```env
+# Database
+DATABASE_URL=sqlite:///./voiceflow.db
+
+# AI Models
+WHISPER_MODEL=openai/whisper-base
+DIALOG_MODEL=microsoft/DialoGPT-medium
+
+# Server
 HOST=0.0.0.0
 PORT=8000
 DEBUG=True
-MAX_FILE_SIZE_MB=25
 ```
 
-### Customization
+### Model Configuration
 
-- **Audio Limits**: Adjust `MAX_FILE_SIZE_MB` in environment variables
-- **Tone Prompts**: Modify prompts in `services/gpt_service.py`
-- **UI Styling**: Customize colors and styling in `frontend/index.html`
-- **Database**: Switch to PostgreSQL by updating `services/db.py`
+The application uses HuggingFace models that are downloaded automatically on first use:
+- Models are cached locally for faster subsequent usage
+- GPU acceleration is used if available
+- Fallback to CPU processing if GPU is not available
 
-## 🚀 Deployment
+## Deployment
 
-### Development
+### Production Setup
 
+1. Set environment variables for production:
 ```bash
-python main.py
+export DEBUG=False
+export HOST=0.0.0.0
+export PORT=8000
 ```
 
-### Production (Docker)
-
+2. Install production dependencies:
 ```bash
-# Build and run with Docker
+pip install gunicorn
+```
+
+3. Run with Gunicorn:
+```bash
+gunicorn backend.main:app -w 4 -k uvicorn.workers.UvicornWorker --host 0.0.0.0 --port 8000
+```
+
+### Docker Deployment
+
+Build and run with Docker:
+```bash
 docker build -t voiceflow-ai .
 docker run -p 8000:8000 voiceflow-ai
 ```
 
-### Cloud Deployment
-
-The app is ready for deployment on:
-
-- **Render**: Use the provided `render.yaml`
-- **Railway**: Connect your GitHub repo
-- **Fly.io**: Use the provided `fly.toml`
-- **Heroku**: Add Procfile for deployment
-
-## 📝 Development Notes
-
-### Adding New Features
-
-1. **Backend**: Add routes in `routes/` and services in `services/`
-2. **Frontend**: Extend the `VoiceFlowApp` class in `js/app.js`
-3. **Database**: Update schema in `services/db.py`
-
-### Code Structure
-
-```
-backend/
-├── main.py              # FastAPI application entry point
-├── routes/              # API route handlers
-├── services/            # Business logic and external APIs
-├── init_db.py           # Database initialization
-└── requirements.txt     # Python dependencies
-
-frontend/
-├── index.html           # Main UI interface
-├── js/app.js           # Frontend application logic
-└── styles/             # Additional CSS (if needed)
-```
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch: `git checkout -b feature-name`
+3. Make your changes and test thoroughly
+4. Commit with descriptive messages: `git commit -m "Add feature description"`
+5. Push to your fork: `git push origin feature-name`
+6. Create a Pull Request
 
-## 📄 License
+## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
-- OpenAI for Whisper and GPT-4 APIs
-- FastAPI team for the excellent framework
-- Tailwind CSS for the design system
-- AudioPen.ai for inspiration
-
-## 📞 Support
-
-For questions or issues:
-
-1. Check the [Issues](../../issues) page
-2. Create a new issue with detailed information
-3. Join our community discussions
-
----
-
-**Built with ❤️ using GitHub Copilot and VS Code**
+- OpenAI for the Whisper speech recognition model
+- Microsoft for the DialoGPT conversation model
+- HuggingFace for providing free access to AI models
+- AudioPen.ai for the inspiration and design concepts

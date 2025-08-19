@@ -1,5 +1,6 @@
-# Exclude frontend directory
+# Exclude frontend directories (frontend code managed separately)
 frontend/
+voiceflow-Frontend/
 
 # Environment variables
 .env
@@ -30,10 +31,16 @@ wheels/
 
 # Virtual environments
 venv/
+.venv/
 env/
 ENV/
 env.bak/
 venv.bak/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
 
 # IDEs
 .vscode/
