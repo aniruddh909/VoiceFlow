@@ -1,6 +1,6 @@
 # VoiceFlow AI
 
-A fullstack audio-to-text application that transforms voice recordings into clear, structured text using AI-powered transcription and text refinement. This project replicates AudioPen.ai functionality with modern design and cost-effective local AI processing.
+A fullstack audio-to-text application that transforms voice recordings into clear, structured text using AI-powered transcription and text refinement.
 
 ![VoiceFlow Frontend](docs/images/frontend-screenshot.png)
 
