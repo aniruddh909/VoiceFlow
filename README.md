@@ -201,23 +201,3 @@ Build and run with Docker:
 docker build -t voiceflow-ai .
 docker run -p 8000:8000 voiceflow-ai
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make your changes and test thoroughly
-4. Commit with descriptive messages: `git commit -m "Add feature description"`
-5. Push to your fork: `git push origin feature-name`
-6. Create a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- OpenAI for the Whisper speech recognition model
-- Microsoft for the DialoGPT conversation model
-- HuggingFace for providing free access to AI models
-- AudioPen.ai for the inspiration and design concepts
