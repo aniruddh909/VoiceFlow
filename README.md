@@ -2,8 +2,8 @@
 
 A fullstack audio-to-text application that transforms voice recordings into clear, structured text using AI-powered transcription and text refinement.
 
-<image-card alt="VoiceFlow Frontend" src="https://raw.githubusercontent.com/aniuddhn99/VoiceFlow/main/docs/images/ss.png" ></image-card>
-alt = "VoiceFlow Frontend" src = https://raw.githubusercontent.com/aniuddhn99/VoiceFlow/main/docs/images/ss.png"
+<image-card alt="VoiceFlow Frontend" src="https://github.com/aniruddh909/VoiceFlow/blob/main/docs/images/ss.png?raw=true<img width="2878" height="1482" alt="image" src="https://github.com/user-attachments/assets/4d18efd1-93ea-4c8d-91d9-e01b5610dc04" />
+ ></image-card>
 
 ## Features
 
