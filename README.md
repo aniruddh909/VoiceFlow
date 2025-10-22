@@ -2,7 +2,7 @@
 
 A fullstack audio-to-text application that transforms voice recordings into clear, structured text using AI-powered transcription and text refinement.
 
-"VoiceFlow Frontend"<img width="2878" height="1482" alt="image" src="https://github.com/user-attachments/assets/4d18efd1-93ea-4c8d-91d9-e01b5610dc04" />
+<img width="2878" height="1482" alt="image" src="https://github.com/user-attachments/assets/4d18efd1-93ea-4c8d-91d9-e01b5610dc04" />
  ></image-card>
 
 ## Features
