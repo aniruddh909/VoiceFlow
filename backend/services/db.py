@@ -196,7 +196,7 @@ class DatabaseService:
                         SET custom_prompt = ?, updated_at = ?
                     """, (custom_prompt, datetime.utcnow()))
                 else:
-                    # Insert new
+                    # Insert new.
                     await db.execute("""
                         INSERT INTO user_preferences (custom_prompt, created_at)
                         VALUES (?, ?)
