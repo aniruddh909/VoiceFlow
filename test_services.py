@@ -15,7 +15,7 @@ from backend.services.hf_text_service import HuggingFaceTextService
 async def test_services():
     print("Testing HuggingFace Services...")
     
-    # Test text service
+    # Test text service.
     print("\n1. Testing HuggingFace Text Service...")
     try:
         text_service = HuggingFaceTextService()
