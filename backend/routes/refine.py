@@ -7,7 +7,7 @@ from typing import Optional
 
 router = APIRouter()
 
-# Initialize services lazily
+# Initialize services lazily.
 def get_gpt_service():
     return HuggingFaceTextService()
 
