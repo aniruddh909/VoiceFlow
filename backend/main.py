@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# Import routes after loading env vars
+# Import routes after loading env vars.
 from .routes import transcribe, refine, notes
 
 app = FastAPI(
