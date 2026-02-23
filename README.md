@@ -104,24 +104,6 @@ Note: The frontend code is managed separately and not included in this repositor
 - `PUT /api/notes/{note_id}` - Update an existing note
 - `DELETE /api/notes/{note_id}` - Delete a note
 
-## Project Structure
-
-```
-VoiceFlow/
-├── backend/
-│   ├── routes/          # API route handlers
-│   ├── services/        # Business logic and AI services
-│   ├── database/        # Database models and operations
-│   ├── models/          # Pydantic models for request/response
-│   └── main.py          # FastAPI application entry point
-├── docs/                # Documentation and images
-├── .venv/               # Python virtual environment (not tracked)
-├── .env                 # Environment variables (not tracked)
-├── requirements.txt     # Python dependencies
-├── start_server.py      # Server startup script
-└── README.md           # This file
-```
-
 ## Development
 
 ### Running in Development Mode
